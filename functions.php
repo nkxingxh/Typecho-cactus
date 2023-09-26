@@ -1,6 +1,7 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-function themeConfig($form) {
+function themeConfig($form)
+{
     $logoimg = new Typecho_Widget_Helper_Form_Element_Text('logoimg', NULL, NULL, _t('页头logo地址'), _t('一般为http://www.yourblog.com/image.png,支持 https:// 或 //,留空则使用默认图片'));
     $form->addInput($logoimg->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('favicon地址'), _t('一般为http://www.yourblog.com/image.ico,支持 https:// 或 //,留空则不设置favicon'));
@@ -8,79 +9,97 @@ function themeConfig($form) {
 
     $appleicon = new Typecho_Widget_Helper_Form_Element_Text('appleicon', NULL, NULL, _t('apple touch icon地址'), _t('一般为http://www.yourblog.com/image.png,支持 https:// 或 //,留空则不设置Apple Touch Icon'));
     $form->addInput($appleicon->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$email = new Typecho_Widget_Helper_Form_Element_Text('email', NULL, NULL, _t('Email地址'), _t('邮箱地址 ,留空则不设置Email地址'));
+    $email = new Typecho_Widget_Helper_Form_Element_Text('email', NULL, NULL, _t('Email地址'), _t('邮箱地址 ,留空则不设置Email地址'));
     $form->addInput($email->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$github = new Typecho_Widget_Helper_Form_Element_Text('github', NULL, NULL, _t('Github地址'), _t('一般为https://github.com/Seevil ,留空则不设置Github地址'));
+    $github = new Typecho_Widget_Helper_Form_Element_Text('github', NULL, NULL, _t('Github地址'), _t('一般为https://github.com/Seevil ,留空则不设置Github地址'));
     $form->addInput($github->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('twitter地址'), _t('一般为https://twitter.com/skyurl ,留空则不设置twitter地址'));
+    $twitter = new Typecho_Widget_Helper_Form_Element_Text('twitter', NULL, NULL, _t('twitter地址'), _t('一般为https://twitter.com/skyurl ,留空则不设置twitter地址'));
     $form->addInput($twitter->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$weibo = new Typecho_Widget_Helper_Form_Element_Text('weibo', NULL, NULL, _t('Weibo地址'), _t('一般为http://www.weibo.com/xxx ,留空则不设置Weibo地址'));
+    $weibo = new Typecho_Widget_Helper_Form_Element_Text('weibo', NULL, NULL, _t('Weibo地址'), _t('一般为http://www.weibo.com/xxx ,留空则不设置Weibo地址'));
     $form->addInput($weibo->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$writing = new Typecho_Widget_Helper_Form_Element_Text('writing', NULL, NULL, _t('首页writing地址'), _t('一般设置为你的归档地址 ,留空则默认为/archives.html'));
+    $writing = new Typecho_Widget_Helper_Form_Element_Text('writing', NULL, NULL, _t('首页writing地址'), _t('一般设置为你的归档地址 ,留空则默认为/archives.html'));
     $form->addInput($writing->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	
-	$Projectsurl = new Typecho_Widget_Helper_Form_Element_Text('Projectsurl', NULL, NULL, _t('首页Projects地址'), _t('一般为http://www.url.com/ ,留空则默认为#地址'));
+
+    $Projectsurl = new Typecho_Widget_Helper_Form_Element_Text('Projectsurl', NULL, NULL, _t('首页Projects地址'), _t('一般为http://www.url.com/ ,留空则默认为#地址'));
     $form->addInput($Projectsurl->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	
-	$urldiy = new Typecho_Widget_Helper_Form_Element_Text('urldiy', NULL, NULL, _t('主页自定义地址'), _t('注意该设置会直接输出设置内容，建议格式为《a class="icon" href="https://twitter.com/skyurl" target="_blank" title="twitter"》《i class="fa fa-twitter"》《/i》《/a》 支持 FontAwesome 图标 ,留空则不显示'));
+
+    $urldiy = new Typecho_Widget_Helper_Form_Element_Text('urldiy', NULL, NULL, _t('主页自定义地址'), _t('注意该设置会直接输出设置内容，建议格式为《a class="icon" href="https://twitter.com/skyurl" target="_blank" title="twitter"》《i class="fa fa-twitter"》《/i》《/a》 支持 FontAwesome 图标 ,留空则不显示'));
     $form->addInput($urldiy->addRule('xssCheck', _t('请不要在链接中使用特殊字符')));
-	$beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('备案号设置'), _t('直接填写备案号即可如：京ICP备888888号'));
+    $beian = new Typecho_Widget_Helper_Form_Element_Text('beian', NULL, NULL, _t('备案号设置'), _t('直接填写备案号即可如：京ICP备888888号'));
     $form->addInput($beian->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
-	$sticky = new Typecho_Widget_Helper_Form_Element_Text('sticky', NULL,NULL, _t('文章置顶'), _t('置顶的文章cid，按照排序输入, 请以半角逗号或空格分隔'));
+    $sticky = new Typecho_Widget_Helper_Form_Element_Text('sticky', NULL, NULL, _t('文章置顶'), _t('置顶的文章cid，按照排序输入, 请以半角逗号或空格分隔'));
     $form->addInput($sticky);
-	$Projects = new Typecho_Widget_Helper_Form_Element_Textarea('Projects', NULL, NULL, _t('首页 Projects 作品链接 设置（注意：切换主题会被清空，注意备份！）'), _t('按照格式输入链接信息，格式：<br><strong>链接名称（必须）|链接地址（必须）|链接描述</strong><br>不同信息之间用英文竖线“|”分隔，例如：<br><strong>XDE|https://www.krsay.com/|可说欢喜</strong><br>若中间有暂时不想填的信息，请留空，例如暂时不想填写链接描述：<br><strong>XDE|https://www.krsay.com||</strong><br>多个链接换行即可，一行一个'));
-	$form->addInput($Projects);
-	
-	$catalog = new Typecho_Widget_Helper_Form_Element_Radio('catalog',
-        array('able' => _t('启用'),
+    $Projects = new Typecho_Widget_Helper_Form_Element_Textarea('Projects', NULL, NULL, _t('首页 Projects 作品链接 设置（注意：切换主题会被清空，注意备份！）'), _t('按照格式输入链接信息，格式：<br><strong>链接名称（必须）|链接地址（必须）|链接描述</strong><br>不同信息之间用英文竖线“|”分隔，例如：<br><strong>XDE|https://www.krsay.com/|可说欢喜</strong><br>若中间有暂时不想填的信息，请留空，例如暂时不想填写链接描述：<br><strong>XDE|https://www.krsay.com||</strong><br>多个链接换行即可，一行一个'));
+    $form->addInput($Projects);
+
+    $catalog = new Typecho_Widget_Helper_Form_Element_Radio(
+        'catalog',
+        array(
+            'able' => _t('启用'),
             'disable' => _t('禁止'),
         ),
-        'disable', _t('文章目录设置'), _t('默认显示随机文章，启用则显示文章目录'));
+        'disable',
+        _t('文章目录设置'),
+        _t('默认显示随机文章，启用则显示文章目录')
+    );
     $form->addInput($catalog);
-	$Emoji = new Typecho_Widget_Helper_Form_Element_Radio('Emoji',
-        array('able' => _t('启用'),
+    $Emoji = new Typecho_Widget_Helper_Form_Element_Radio(
+        'Emoji',
+        array(
+            'able' => _t('启用'),
             'disable' => _t('禁止'),
         ),
-        'disable', _t('Emoji表情设置'), _t('默认显示Emoji表情，如果你的数据库charset配置不是utf8mb4请禁用'));
+        'disable',
+        _t('Emoji表情设置'),
+        _t('默认显示Emoji表情，如果你的数据库charset配置不是utf8mb4请禁用')
+    );
     $form->addInput($Emoji);
 }
 
-function themeInit($archive) {
+function themeInit($archive)
+{
     if ($archive->is('index')) {
         $archive->parameter->pageSize = 9; // 自定义条数
     }
-	if ($archive->is('single')) {  
-    $archive->content = createCatalog($archive->content);//文章锚点实现
-}
-	@$comment = spam_protection_pre($comment,$post, $result);//数字验证码
+    if ($archive->is('single')) {
+        $archive->content = createCatalog($archive->content); //文章锚点实现
+    }
+    @$comment = spam_protection_pre($comment, $post, $result); //数字验证码
 }
 
-function parseContent($obj){
+function parseContent($obj)
+{
     $options = Typecho_Widget::widget('Widget_Options');
-    if(!empty($options->src_add) && !empty($options->cdn_add)){
-        $obj->content = str_ireplace($options->src_add,$options->cdn_add,$obj->content);
+    if (!empty($options->src_add) && !empty($options->cdn_add)) {
+        $obj->content = str_ireplace($options->src_add, $options->cdn_add, $obj->content);
     }
-	$obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\" rel=\"nofollow\">", $obj->content); //新标签页打开连接
+    $obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\" rel=\"nofollow\">", $obj->content); //新标签页打开连接
     echo trim($obj->content);
 }
 
 /**项目展示
 <?php Projects(); ?>
-*/
-function Projects($sorts = NULL) {
+ */
+function Projects($sorts = NULL)
+{
     $options = Typecho_Widget::widget('Widget_Options');
     $Project = NULL;
     if ($options->Projects) {
         $list = explode("\r\n", $options->Projects);
         foreach ($list as $val) {
             list($name, $url, $description, $sort) = explode("|", $val);
+            if(!empty($description)) $description = ': ' . $description;
             if ($sorts) {
                 $arr = explode("|", $sorts);
                 if ($sort && in_array($sort, $arr)) {
-                    $Project .= $url ? '<li class="project-item"><a href="'.$url.'" target="_blank">'.$name.'</a>: '.$description.'</li>' : '<li class="project-item">'.$name.': '.$description.'</li>';
+                    $Project .= $url 
+                        ? '<li class="project-item"><a href="' . $url . '" target="_blank">' . $name . '</a>' . $description . '</li>' 
+                        : '<li class="project-item">' . $name . $description . '</li>';
                 }
             } else {
-                $Project .= $url ? '<li class="project-item"><a href="'.$url.'" target="_blank">'.$name.'</a>: '.$description.'</li>' : '<li class="project-item">'.$name.': '.$description.'</li>';
+                $Project .= $url
+                    ? '<li class="project-item"><a href="' . $url . '" target="_blank">' . $name . '</a>' . $description . '</li>'
+                    : '<li class="project-item">' . $name . $description . '</li>';
             }
         }
     }
@@ -89,12 +108,13 @@ function Projects($sorts = NULL) {
 
 /**阅读浏览次数 
 <?php Postviews($this); ?>
-*/
-function Postviews($archive) {
+ */
+function Postviews($archive)
+{
     $db = Typecho_Db::get();
     $cid = $archive->cid;
     if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `'.$db->getPrefix().'contents` ADD `views` INT(10) DEFAULT 0;');
+        $db->query('ALTER TABLE `' . $db->getPrefix() . 'contents` ADD `views` INT(10) DEFAULT 0;');
     }
     $exist = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid))['views'];
     if ($archive->is('single')) {
@@ -102,87 +122,89 @@ function Postviews($archive) {
         $cookie = $cookie ? explode(',', $cookie) : array();
         if (!in_array($cid, $cookie)) {
             $db->query($db->update('table.contents')
-                ->rows(array('views' => (int)$exist+1))
+                ->rows(array('views' => (int)$exist + 1))
                 ->where('cid = ?', $cid));
-            $exist = (int)$exist+1;
+            $exist = (int)$exist + 1;
             array_push($cookie, $cid);
             $cookie = implode(',', $cookie);
             Typecho_Cookie::set('contents_views', $cookie);
         }
     }
-    echo $exist == 0 ?  : $exist;
+    echo $exist == 0 ?: $exist;
 }
 
-function theme_random_posts(){
-$defaults = array(
-'number' => 6,
-'xformat' => '<li><a href="{permalink}">{title}</a></li>'
-);
-$db = Typecho_Db::get();
-$adapterName = $db->getAdapterName();//兼容非MySQL数据库
-if($adapterName == 'pgsql' || $adapterName == 'Pdo_Pgsql' || $adapterName == 'Pdo_SQLite' || $adapterName == 'SQLite'){
-   $order_by = 'RANDOM()';
-   }else{
-   $order_by = 'RAND()';
- }
-$sql = $db->select()->from('table.contents') 
-->where('status = ?','publish')
-->where('type = ?', 'post')
-->where('created <= unix_timestamp(now())', 'post') //添加这一句避免未达到时间的文章提前曝光
-->limit($defaults['number'])
-->order($order_by);
-$result = $db->fetchAll($sql);
-foreach($result as $val){
-$val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
-echo str_replace(array('{permalink}', '{title}'),array($val['permalink'], $val['title']), $defaults['xformat']);
-}
+function theme_random_posts()
+{
+    $defaults = array(
+        'number' => 6,
+        'xformat' => '<li><a href="{permalink}">{title}</a></li>'
+    );
+    $db = Typecho_Db::get();
+    $adapterName = $db->getAdapterName(); //兼容非MySQL数据库
+    if ($adapterName == 'pgsql' || $adapterName == 'Pdo_Pgsql' || $adapterName == 'Pdo_SQLite' || $adapterName == 'SQLite') {
+        $order_by = 'RANDOM()';
+    } else {
+        $order_by = 'RAND()';
+    }
+    $sql = $db->select()->from('table.contents')
+        ->where('status = ?', 'publish')
+        ->where('type = ?', 'post')
+        ->where('created <= unix_timestamp(now())', 'post') //添加这一句避免未达到时间的文章提前曝光
+        ->limit($defaults['number'])
+        ->order($order_by);
+    $result = $db->fetchAll($sql);
+    foreach ($result as $val) {
+        $val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
+        echo str_replace(array('{permalink}', '{title}'), array($val['permalink'], $val['title']), $defaults['xformat']);
+    }
 }
 
 
 /** 获取浏览器信息 <?php echo getBrowser($comments->agent); ?> */
 function getBrowser($agent)
-{ $outputer = false;
+{
+    $outputer = false;
     if (preg_match('/MSIE\s([^\s|;]+)/i', $agent, $regs)) {
         $outputer = 'IE Browser';
     } else if (preg_match('/FireFox\/([^\s]+)/i', $agent, $regs)) {
-      $str1 = explode('Firefox/', $regs[0]);
-$FireFox_vern = explode('.', $str1[1]);
-        $outputer = 'Firefox Browser '. $FireFox_vern[0];
+        $str1 = explode('Firefox/', $regs[0]);
+        $FireFox_vern = explode('.', $str1[1]);
+        $outputer = 'Firefox Browser ' . $FireFox_vern[0];
     } else if (preg_match('/Maxthon([\d]*)\/([^\s]+)/i', $agent, $regs)) {
-      $str1 = explode('Maxthon/', $agent);
-$Maxthon_vern = explode('.', $str1[1]);
-        $outputer = 'Maxthon Browser '.$Maxthon_vern[0];
+        $str1 = explode('Maxthon/', $agent);
+        $Maxthon_vern = explode('.', $str1[1]);
+        $outputer = 'Maxthon Browser ' . $Maxthon_vern[0];
     } else if (preg_match('#SE 2([a-zA-Z0-9.]+)#i', $agent, $regs)) {
         $outputer = 'Sogo Browser';
     } else if (preg_match('#360([a-zA-Z0-9.]+)#i', $agent, $regs)) {
-$outputer = '360 Browser';
+        $outputer = '360 Browser';
     } else if (preg_match('/Edge([\d]*)\/([^\s]+)/i', $agent, $regs)) {
         $str1 = explode('Edge/', $regs[0]);
-$Edge_vern = explode('.', $str1[1]);
-        $outputer = 'Edge '.$Edge_vern[0];
+        $Edge_vern = explode('.', $str1[1]);
+        $outputer = 'Edge ' . $Edge_vern[0];
     } else if (preg_match('/EdgiOS([\d]*)\/([^\s]+)/i', $agent, $regs)) {
         $str1 = explode('EdgiOS/', $regs[0]);
         $outputer = 'Edge';
     } else if (preg_match('/UC/i', $agent)) {
-              $str1 = explode('rowser/',  $agent);
-$UCBrowser_vern = explode('.', $str1[1]);
-        $outputer = 'UC Browser '.$UCBrowser_vern[0];
-    }else if (preg_match('/OPR/i', $agent)) {
-              $str1 = explode('OPR/',  $agent);
-$opr_vern = explode('.', $str1[1]);
-        $outputer = 'Open Browser '.$opr_vern[0];
+        $str1 = explode('rowser/',  $agent);
+        $UCBrowser_vern = explode('.', $str1[1]);
+        $outputer = 'UC Browser ' . $UCBrowser_vern[0];
+    } else if (preg_match('/OPR/i', $agent)) {
+        $str1 = explode('OPR/',  $agent);
+        $opr_vern = explode('.', $str1[1]);
+        $outputer = 'Open Browser ' . $opr_vern[0];
     } else if (preg_match('/MicroMesseng/i', $agent, $regs)) {
         $outputer = 'Weixin Browser';
-    }  else if (preg_match('/WeiBo/i', $agent, $regs)) {
+    } else if (preg_match('/WeiBo/i', $agent, $regs)) {
         $outputer = 'WeiBo Browser';
-    }  else if (preg_match('/QQ/i', $agent, $regs)||preg_match('/QQ Browser\/([^\s]+)/i', $agent, $regs)) {
-                  $str1 = explode('rowser/',  $agent);
-$QQ_vern = explode('.', $str1[1]);
-        $outputer = 'QQ Browser '.$QQ_vern[0];
+    } else if (preg_match('/QQ/i', $agent, $regs) || preg_match('/QQ Browser\/([^\s]+)/i', $agent, $regs)) {
+        $str1 = explode('rowser/',  $agent);
+        $QQ_vern = explode('.', $str1[1]);
+        $outputer = 'QQ Browser ' . $QQ_vern[0];
     } else if (preg_match('/MQBHD/i', $agent, $regs)) {
-                  $str1 = explode('MQBHD/',  $agent);
-$QQ_vern = explode('.', $str1[1]);
-        $outputer = 'QQ Browser '.$QQ_vern[0];
+        $str1 = explode('MQBHD/',  $agent);
+        $QQ_vern = explode('.', $str1[1]);
+        $outputer = 'QQ Browser ' . $QQ_vern[0];
     } else if (preg_match('/BIDU/i', $agent, $regs)) {
         $outputer = 'Baidu Browser';
     } else if (preg_match('/LBBROWSER/i', $agent, $regs)) {
@@ -192,9 +214,9 @@ $QQ_vern = explode('.', $str1[1]);
     } else if (preg_match('/XiaoMi/i', $agent, $regs)) {
         $outputer = 'XiaoMi Browser';
     } else if (preg_match('/UBrowser/i', $agent, $regs)) {
-              $str1 = explode('rowser/',  $agent);
-$UCBrowser_vern = explode('.', $str1[1]);
-        $outputer = 'UCBrowser '.$UCBrowser_vern[0];
+        $str1 = explode('rowser/',  $agent);
+        $UCBrowser_vern = explode('.', $str1[1]);
+        $outputer = 'UCBrowser ' . $UCBrowser_vern[0];
     } else if (preg_match('/mailapp/i', $agent, $regs)) {
         $outputer = 'Email Browser';
     } else if (preg_match('/2345Explorer/i', $agent, $regs)) {
@@ -203,7 +225,7 @@ $UCBrowser_vern = explode('.', $str1[1]);
         $outputer = 'Sleipnir Browser';
     } else if (preg_match('/YaBrowser/i', $agent, $regs)) {
         $outputer = 'Yandex Browser';
-    }  else if (preg_match('/Opera[\s|\/]([^\s]+)/i', $agent, $regs)) {
+    } else if (preg_match('/Opera[\s|\/]([^\s]+)/i', $agent, $regs)) {
         $outputer = 'Opera Browser';
     } else if (preg_match('/MZBrowser/i', $agent, $regs)) {
         $outputer = 'MZ Browser';
@@ -213,31 +235,31 @@ $UCBrowser_vern = explode('.', $str1[1]);
         $outputer = 'Quark Browser';
     } else if (preg_match('/mixia/i', $agent, $regs)) {
         $outputer = 'Mixia Browser';
-    }else if (preg_match('/fusion/i', $agent, $regs)) {
+    } else if (preg_match('/fusion/i', $agent, $regs)) {
         $outputer = 'Fusion';
     } else if (preg_match('/CoolMarket/i', $agent, $regs)) {
         $outputer = 'CoolMarket Browser';
     } else if (preg_match('/Thunder/i', $agent, $regs)) {
         $outputer = 'Thunder Browser';
     } else if (preg_match('/Chrome([\d]*)\/([^\s]+)/i', $agent, $regs)) {
-$str1 = explode('Chrome/', $agent);
-$chrome_vern = explode('.', $str1[1]);
-        $outputer = 'Chrome '.$chrome_vern[0];
+        $str1 = explode('Chrome/', $agent);
+        $chrome_vern = explode('.', $str1[1]);
+        $outputer = 'Chrome ' . $chrome_vern[0];
     } else if (preg_match('/safari\/([^\s]+)/i', $agent, $regs)) {
-         $str1 = explode('Version/',  $agent);
-$safari_vern = explode('.', $str1[1]);
-        $outputer = 'Safari '.$safari_vern[0];
-    } else{
+        $str1 = explode('Version/',  $agent);
+        $safari_vern = explode('.', $str1[1]);
+        $outputer = 'Safari ' . $safari_vern[0];
+    } else {
         return false;
     }
-   return $outputer;
+    return $outputer;
 }
 
 /** 获取操作系统信息 <?php echo getOs($comments->agent); ?>*/
 function getOs($agent)
 {
     $os = false;
- 
+
     if (preg_match('/win/i', $agent)) {
         if (preg_match('/nt 10.0/i', $agent)) {
             $os = 'Windows 10';
@@ -245,36 +267,30 @@ function getOs($agent)
             $os = 'Windows 7';
         } else if (preg_match('/nt 6.2/i', $agent)) {
             $os = 'Windows 8';
-        } else if(preg_match('/nt 6.3/i', $agent)) {
+        } else if (preg_match('/nt 6.3/i', $agent)) {
             $os = 'Windows 8.1';
-        } else if(preg_match('/nt 5.1/i', $agent)) {
+        } else if (preg_match('/nt 5.1/i', $agent)) {
             $os = 'Windows XP';
         } else if (preg_match('/nt 6.0/i', $agent)) {
             $os = 'Windows Vista';
-        } else{
+        } else {
             $os = 'Windows 11';
         }
     } else if (preg_match('/android/i', $agent)) {
-if (preg_match('/android 11/i', $agent)) {
-        $os = 'Android R';
-    }
-else if (preg_match('/android 12/i', $agent)) {
-        $os = 'Android 12';
-    }
-else if (preg_match('/android 10/i', $agent)) {
-        $os = 'Android Q';
-    }
-else if (preg_match('/android 9/i', $agent)) {
-        $os = 'Android P';
-    }
-else if (preg_match('/android 8/i', $agent)) {
-        $os = 'Android O';
-    }
-else{
-        $os = 'Android';
-}
-    }
- else if (preg_match('/ubuntu/i', $agent)) {
+        if (preg_match('/android 11/i', $agent)) {
+            $os = 'Android R';
+        } else if (preg_match('/android 12/i', $agent)) {
+            $os = 'Android 12';
+        } else if (preg_match('/android 10/i', $agent)) {
+            $os = 'Android Q';
+        } else if (preg_match('/android 9/i', $agent)) {
+            $os = 'Android P';
+        } else if (preg_match('/android 8/i', $agent)) {
+            $os = 'Android O';
+        } else {
+            $os = 'Android';
+        }
+    } else if (preg_match('/ubuntu/i', $agent)) {
         $os = 'ubuntu';
     } else if (preg_match('/linux/i', $agent)) {
         $os = 'Linux';
@@ -284,16 +300,17 @@ else{
         $os = 'iPad';
     } else if (preg_match('/mac/i', $agent)) {
         $os = 'OSX';
-    }else if (preg_match('/cros/i', $agent)) {
+    } else if (preg_match('/cros/i', $agent)) {
         $os = 'Chrome os';
-    }else {
- return false;
+    } else {
+        return false;
     }
-   return $os;
+    return $os;
 }
 //html压缩 
 /***<?php $html_source = ob_get_contents(); ob_clean(); print compressHtml($html_source); ob_end_flush(); ?>**/
-function compressHtml($html_source) {
+function compressHtml($html_source)
+{
     $chunks = preg_split('/(<!--<nocompress>-->.*?<!--<\/nocompress>-->|<nocompress>.*?<\/nocompress>|<pre.*?\/pre>|<textarea.*?\/textarea>|<script.*?\/script>)/msi', $html_source, -1, PREG_SPLIT_DELIM_CAPTURE);
     $compress = '';
     foreach ($chunks as $c) {
@@ -343,41 +360,42 @@ function compressHtml($html_source) {
 }
 
 //为文章标题添加锚点
-function createCatalog($obj) {    
+function createCatalog($obj)
+{
     global $catalog;
     global $catalog_count;
     $catalog = array();
     $catalog_count = 0;
-    $obj = preg_replace_callback('/<h([1-6])(.*?)>(.*?)<\/h\1>/i', function($obj) {
+    $obj = preg_replace_callback('/<h([1-6])(.*?)>(.*?)<\/h\1>/i', function ($obj) {
         global $catalog;
         global $catalog_count;
-        $catalog_count ++;
+        $catalog_count++;
         $catalog[] = array('text' => trim(strip_tags($obj[3])), 'depth' => $obj[1], 'count' => $catalog_count);
-        return '<h'.$obj[1].$obj[2].'><a name="cl-'.$catalog_count.'"></a>'.$obj[3].'</h'.$obj[1].'>';
+        return '<h' . $obj[1] . $obj[2] . '><a name="cl-' . $catalog_count . '"></a>' . $obj[3] . '</h' . $obj[1] . '>';
     }, $obj);
     return $obj;
 }
 
 //输出文章目录容器
-function getCatalog() {    
+function getCatalog()
+{
     global $catalog;
     $index = '';
     if ($catalog) {
-        
+
         $prev_depth = '';
         $to_depth = 0;
-        foreach($catalog as $catalog_item) {
+        foreach ($catalog as $catalog_item) {
             $catalog_depth = $catalog_item['depth'];
             if ($prev_depth) {
                 if ($catalog_depth == $prev_depth) {
                     $index .= '</li>';
                 } elseif ($catalog_depth > $prev_depth) {
                     $to_depth++;
-                   
                 } else {
                     $to_depth2 = ($to_depth > ($prev_depth - $catalog_depth)) ? ($prev_depth - $catalog_depth) : $to_depth;
                     if ($to_depth2) {
-                        for ($i=0; $i<$to_depth2; $i++) {
+                        for ($i = 0; $i < $to_depth2; $i++) {
                             $index .= '</li>';
                             $to_depth--;
                         }
@@ -385,10 +403,10 @@ function getCatalog() {
                     $index .= '</li>';
                 }
             }
-            $index .= '<li><a href="#cl-'.$catalog_item['count'].'">'.$catalog_item['text'].'</a>';
+            $index .= '<li><a href="#cl-' . $catalog_item['count'] . '">' . $catalog_item['text'] . '</a>';
             $prev_depth = $catalog_item['depth'];
         }
-        for ($i=0; $i<=$to_depth; $i++) {
+        for ($i = 0; $i <= $to_depth; $i++) {
             $index .= '</li>';
         }
     }
@@ -437,7 +455,6 @@ function getPermalinkFromCoid($coid)
         if ($key == $break) {
             break;
         }
-
     }
     $parentContent = $contents->push($db->fetchRow($contents->select()->where('table.contents.cid = ?', $cid)));
     $permalink = rtrim($parentContent['permalink'], '/');
@@ -452,7 +469,7 @@ function getPermalinkFromCoid($coid)
 function showCommentContent($coid)
 {
     $db = Typecho_Db::get();
-    $result = $db->fetchRow($db->select('text')->from('table.comments')->where('coid = ? AND (status = ? OR status = ?)', $coid, 'approved','waiting'));
+    $result = $db->fetchRow($db->select('text')->from('table.comments')->where('coid = ? AND (status = ? OR status = ?)', $coid, 'approved', 'waiting'));
     $text = $result['text'];
     $atStr = commentAtContent($coid);
     $_content = Markdown::convert($text);
@@ -472,11 +489,11 @@ function showCommentContent($coid)
 function commentAtContent($coid)
 {
     $db = Typecho_Db::get();
-    $prow = $db->fetchRow($db->select('parent')->from('table.comments')->where('coid = ? AND (status = ? OR status = ?)', $coid, 'approved','waiting'));
+    $prow = $db->fetchRow($db->select('parent')->from('table.comments')->where('coid = ? AND (status = ? OR status = ?)', $coid, 'approved', 'waiting'));
     $parent = $prow['parent'];
     if ($parent != "0") {
         $arow = $db->fetchRow($db->select('author')->from('table.comments')
-            ->where('coid = ? AND (status = ? OR status = ?)', $parent, 'approved','waiting'));
+            ->where('coid = ? AND (status = ? OR status = ?)', $parent, 'approved', 'waiting'));
         $author = $arow['author'];
         $href = '<p><a  href="#comment-' . $parent . '">@' . $author . '</a> ';
         return $href;
@@ -487,44 +504,49 @@ function commentAtContent($coid)
 
 //算术验证评论
 
-function spam_protection_math(){
-    $num1=1;
-    $num2=rand(1,9);
+function spam_protection_math()
+{
+    $num1 = 1;
+    $num2 = rand(1, 9);
     echo "$num1 + $num2 = ";
     echo "<input type=\"text\" name=\"sum\" class=\"vnick vinput\" value=\"\" size=\"25\" tabindex=\"4\" style=\" width:70px;\" placeholder=\"计算结果\">\n";
     echo "<input type=\"hidden\" name=\"num1\" value=\"$num1\">\n";
     echo "<input type=\"hidden\" name=\"num2\" value=\"$num2\">";
 }
-function spam_protection_pre($comment, $post, $result){
-    if(isset($_POST['sum'])){$sum=$_POST['sum'];}
-    switch($sum){
-        case $_POST['num1']+$_POST['num2']:
-        break;
+function spam_protection_pre($comment, $post, $result)
+{
+    if (isset($_POST['sum'])) {
+        $sum = $_POST['sum'];
+    }
+    switch ($sum) {
+        case $_POST['num1'] + $_POST['num2']:
+            break;
         case null:
-        throw new Typecho_Widget_Exception(_t('抱歉：请输入验证码','评论失败'));
-        break;
+            throw new Typecho_Widget_Exception(_t('抱歉：请输入验证码', '评论失败'));
+            break;
         default:
-        throw new Typecho_Widget_Exception(_t('抱歉：验证码错误，请返回重试','评论失败'));
-
-	};
+            throw new Typecho_Widget_Exception(_t('抱歉：验证码错误，请返回重试', '评论失败'));
+    };
     return $comment;
 }
 
 /**
-* 获取扇贝单词每日一句
-*/
-function today(){
-    //删除之前的图片和故事
-    for ($i=1; $i <=30 ; $i++) { 
-        @unlink(date('Ymd',time()-24*3600*$i).'.json');
-    }
-    $coverstory = date('Ymd').'.json'; //每日故事 json格式
+ * 获取扇贝单词每日一句
+ */
+function today()
+{
+    $coverstory = date('Ymd') . '.json'; //每日故事 json格式
     if (!file_exists($coverstory)) {
+        //删除之前的图片和故事
+        for ($i = 1; $i <= 30; $i++) {
+            @unlink(date('Ymd', time() - 24 * 3600 * $i) . '.json');
+        }
+        //获取最新
         $http = Typecho_Http_Client::get();
-		$http->Send('https://apiv3.shanbay.com/weapps/dailyquote/quote/');
-		$shanbaytoday = $http->getResponseBody();
-        file_put_contents($coverstory,$shanbaytoday); //写入文本
+        $http->Send('https://apiv3.shanbay.com/weapps/dailyquote/quote/');
+        $shanbaytoday = $http->getResponseBody();
+        file_put_contents($coverstory, $shanbaytoday); //写入文本
     }
-    $coverstory = json_decode(file_get_contents($coverstory),true);
+    $coverstory = json_decode(file_get_contents($coverstory), true);
     return $coverstory;
 }

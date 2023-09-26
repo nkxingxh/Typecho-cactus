@@ -271,7 +271,7 @@ article .content .caption{color:color-grey;display:block;font-size:.9em;margin-t
 #footer li:last-child{border-right:0;margin-right:0}
 #footer li:last-child a{margin-right:0}
 #footer a:hover{color:#999}
-#footer .footer-left{height:20px;line-height:25px;vertical-align:middle}
+#footer .footer-left{height:53px;line-height:25px;vertical-align:middle}
 @media (min-width:39rem){#footer{padding-top:20px;padding-bottom:20px}
 #footer .footer-left{float:left}
 #footer .footer-right{float:right}

@@ -57,6 +57,7 @@ function threadedComments($comments, $options) {
 <div class="blog-post-comments v" id="comments">
 <div class="blog-post-comments v" id="<?php $this->respondId(); ?>">
 <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form">
+<?php Turnstile_Plugin::output(); ?>
 	<?php if($this->user->hasLogin()): ?>
 	<?php _e('登录身份: '); ?><h5><a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>. <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a></h5>
 

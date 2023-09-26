@@ -1,22 +1,22 @@
 {
-    "name": "仙岛驿站",
-    "short_name": "仙岛驿站",
+    "name": "NKXingXh's Blog",
+    "short_name": "NKXingXh's Blog",
     "theme_color": "#1d1f21",
     "background_color": "#1d1f21",
     "display": "standalone",
     "Scope": "/",
     "start_url": "/",
     "icons": [{
-        "src": "images/logo.png",
+        "src": "/qimg.webp",
         "sizes": "144x144",
-        "type": "image/png"
+        "type": "image/webp"
     }, {
-        "src": "images/logo.png",
+        "src": "/qimg.webp",
         "sizes": "128x128",
-        "type": "image/png"
+        "type": "image/webp"
     }, {
-        "src": "images/logo.png",
+        "src": "/qimg.webp",
         "sizes": "96x96",
-        "type": "image/png"
+        "type": "image/webp"
     }]
 }
