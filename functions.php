@@ -54,6 +54,17 @@ function themeConfig($form)
         _t('默认显示Emoji表情，如果你的数据库charset配置不是utf8mb4请禁用')
     );
     $form->addInput($Emoji);
+    $pjax = new Typecho_Widget_Helper_Form_Element_Radio(
+        'pjax',
+        array(
+            'enable' => _t('启用'),
+            'disable' => _t('禁用'),
+        ),
+        'disable',
+        _t('jQuery PJAX (实验性功能)'),
+        _t('使用 ajax 和 pushState 两个技术改善用户的网页浏览体验')
+    );
+    $form->addInput($pjax);
 }
 
 function themeInit($archive)

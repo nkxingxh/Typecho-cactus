@@ -53,13 +53,16 @@
                 }
             }, true);
         </script>
-        <!-- PJAX -->
-        <script src="https://cdn.staticfile.org/jquery.pjax/2.0.1/jquery.pjax.min.js" type="application/javascript"></script>
-        <script>
-            $(document).pjax('a', '#pjax-container', {
-                timeout: 3000
-            });
-        </script>
+
+        <?php if($this->options->pjax == 'enable') : ?>
+            <!-- PJAX -->
+            <script src="https://cdn.staticfile.org/jquery.pjax/2.0.1/jquery.pjax.min.js" type="application/javascript"></script>
+            <script>
+                $(document).pjax('a', '#pjax-container', {
+                    timeout: 3000
+                });
+            </script>
+        <?php endif; ?>
 
         <script>
             var _hmt = _hmt || [];
