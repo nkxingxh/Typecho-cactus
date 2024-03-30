@@ -130,7 +130,7 @@ if ($sticky && $this->is('index') || $this->is('front')) {
       if (location.pathname !== "/") return;
       $.get("<?php $this->options->siteUrl(); ?><?php echo date('Ymd') . '.json'; ?>", function(data) {
         var str = (data.content || "") + "\n" + (data.translation || "");
-        var auth = "NKXingXh's Blog © 2023. Powered By XyunCloud.\nlogin: xyunuser\nPassword: ************";
+        var auth = "NKXingXh's Blog © <?php echo date('Y'); ?>. Powered By XyunCloud.\nlogin: xyunuser\nPassword: ************";
         var login = `Last login: <?php echo date('D M j G:i:s'); ?> from <?php if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
                                                                             $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
                                                                             $ip = $ip[count($ip) - 1];

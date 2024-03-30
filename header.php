@@ -16,28 +16,50 @@
         <meta property="og:locale" content="zh_CN">
         <meta property="og:image" content="<?php if ($this->options->logoimg) : ?><?php $this->options->logoimg(); ?><?php else : ?><?php $this->options->themeUrl('images/logo.webp'); ?><?php endif; ?>">
         <meta property="og:site_name" content="<?php $this->options->title(); ?>">
+
         <?php if ($this->is('index')) : ?>
-            <meta name="description" itemprop="description" content="<?php $this->options->description() ?>">
+            <!-- <meta name="description" itemprop="description" content="<?php $this->options->description() ?>"> -->
             <meta property="og:url" content="<?php $this->options->siteUrl(); ?>" />
             <meta property="og:title" content="<?php $this->options->title(); ?>" />
             <meta property="og:author" content="<?php $this->author->name(); ?>" />
             <meta property="og:description" content="<?php $this->options->description(); ?>" />
         <?php endif; ?>
+
         <?php if ($this->is('post') || $this->is('page')) : ?>
-            <meta name="description" itemprop="description" content="<?php $this->description(); ?>">
+            <!-- <meta name="description" itemprop="description" content="<?php $this->description(); ?>"> -->
             <meta property="og:url" content="<?php $this->permalink(); ?>" />
             <meta property="og:title" content="<?php $this->title(); ?> - <?php $this->options->title(); ?>" />
             <meta property="og:author" content="<?php $this->author(); ?>" />
             <meta property="og:description" content="<?php $this->description(); ?>" />
             <meta property="og:release_date" content="<?php $this->date(); ?>" />
         <?php endif; ?>
+
+        <?php if ($this->is('tag') || $this->is('category')) : ?>
+            <meta name="description" content="<?php
+                    $this->archiveTitle(array(
+                        'category' => _t('分类 %s 下的文章'),
+                        'search' => _t('包含关键字 %s 的文章'),
+                        'tag' => _t('标签 %s 下的文章'),
+                        'author' => _t('%s 发布的文章')
+                    ), '', ' - ');
+                    $this->options->title(); ?>" />
+        <?php endif; ?>
+
         <?php $this->header('generator=&template=&pingback=&xmlrpc=&wlw=&commentReply='); ?>
-        <title><?php $this->archiveTitle(array(
+
+        <title><?php
+                $this->archiveTitle(array(
                     'category'  =>  _t('分类 %s 下的文章'),
                     'search'    =>  _t('包含关键字 %s 的文章'),
                     'tag'       =>  _t('标签 %s 下的文章'),
                     'author'    =>  _t('%s 发布的文章')
-                ), '', ' - '); ?><?php $this->options->title(); ?></title>
+                ), '', ' - ');
+                $this->options->title();
+                if ($this->is('post')) {
+                    echo ' - ';
+                    $this->tags('/', false, 'blog.nkxingxh.top');
+                }
+                ?></title>
         <?php if ($this->options->favicon) : ?>
             <link rel="shortcut icon" href="<?php $this->options->favicon(); ?>"><?php endif; ?>
         <?php if ($this->options->appleicon) : ?>
@@ -54,7 +76,7 @@
             }, true);
         </script>
 
-        <?php if($this->options->pjax == 'enable') : ?>
+        <?php if ($this->options->pjax == 'enable') : ?>
             <!-- PJAX -->
             <script src="https://cdn.staticfile.org/jquery.pjax/2.0.1/jquery.pjax.min.js" type="application/javascript"></script>
             <script>
@@ -74,13 +96,16 @@
             })();
         </script>
     </head>
+
     <body>
         <div class="content index width mx-auto px3 my4" id="pjax-container">
-<?php else: ?>
-    <script>document.title="<?php echo addslashes($this->archiveTitle(array(
-                    'category'  =>  _t('分类 %s 下的文章'),
-                    'search'    =>  _t('包含关键字 %s 的文章'),
-                    'tag'       =>  _t('标签 %s 下的文章'),
-                    'author'    =>  _t('%s 发布的文章')
-                ), '', ' - ') . $this->options->title()); ?>";</script>
-<?php endif; ?>
+        <?php else : ?>
+            <script>
+                document.title = "<?php echo addslashes($this->archiveTitle(array(
+                                        'category'  =>  _t('分类 %s 下的文章'),
+                                        'search'    =>  _t('包含关键字 %s 的文章'),
+                                        'tag'       =>  _t('标签 %s 下的文章'),
+                                        'author'    =>  _t('%s 发布的文章')
+                                    ), '', ' - ') . $this->options->title()); ?>";
+            </script>
+        <?php endif; ?>
