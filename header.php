@@ -57,6 +57,8 @@
                 $this->options->title();
                 if ($this->is('post')) {
                     echo ' - ';
+                    $this->category(' - ', false, '未分类');
+                    echo ' - ';
                     $this->tags('/', false, 'blog.nkxingxh.top');
                 }
                 ?></title>
