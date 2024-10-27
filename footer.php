@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
-<?php if (!$_REQUEST['_pjax']) : ?>
+<?php if (!($_REQUEST['_pjax'] ?? null)) : ?>
 </div>
 <div class="mx-auto px3 my5">
   <footer id="footer" style="display:block;">

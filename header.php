@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php if (!$_REQUEST['_pjax']) : ?>
+<?php if (!($_REQUEST['_pjax'] ?? null)) : ?>
     <!DOCTYPE html>
     <html lang="zh">
 

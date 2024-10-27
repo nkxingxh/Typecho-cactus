@@ -98,7 +98,7 @@ function Projects($sorts = NULL)
     if ($options->Projects) {
         $list = explode("\r\n", $options->Projects);
         foreach ($list as $val) {
-            list($name, $url, $description, $sort) = explode("|", $val);
+            @list($name, $url, $description, $sort) = explode("|", $val);
             if(!empty($description)) $description = ': ' . $description;
             if ($sorts) {
                 $arr = explode("|", $sorts);
