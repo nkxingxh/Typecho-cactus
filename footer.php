@@ -6,7 +6,7 @@
   <footer id="footer" style="display:block;">
     <div class="footer-left">
       Copyright © 2022-<?php echo date('Y'); ?> <a href="https://www.nkxingxh.top" target="_blank">NKXingXh</a>. <br>
-      <a href="http://www.typecho.org" target="_blank" rel="nofollow">Typecho</a>'s theme by <a href="https://www.krsay.com/typecho/cactus.html" target="_blank">Xingr</a>.
+      <a href="http://www.typecho.org" target="_blank" rel="nofollow">Typecho</a>'s theme by <a href="https://www.krsay.com/typecho/cactus.html" target="_blank">Xingr</a> / <a href="https://github.com/nkxingxh/Typecho-cactus" target="_blank">NKXingXh</a>.
       <?php if ($this->options->beian) : ?><a href="https://beian.miit.gov.cn/"><?php $this->options->beian(); ?></a><?php endif; ?>
     </div>
     <div class="footer-right">
